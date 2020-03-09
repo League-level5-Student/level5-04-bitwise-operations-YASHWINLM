@@ -3,6 +3,8 @@ package _04_Base64_Decoder;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
+import javax.swing.JOptionPane;
+
 public class Base64Decoder {
 	/*
 	 * Base 64 is a way of encoding binary data using text.
@@ -68,13 +70,18 @@ public class Base64Decoder {
 	//   and returns the full byte array of the decoded base64 characters.
 	public static byte[] base64StringToByteArray(String file) {
 		
-		char[] characters=file.toCharArray();
-		int x= characters.length/8;
-		byte[] bytes= new byte[(int) x];
+		byte[] bytes= new byte[(int)(file.length()*(0.75))];
 		
-		for (int i = 0; i < characters.length/4; i++) {
-			convert4CharsTo24Bits(file.substring(i, i+5));
+		int index=0;
+		for (int i = 0; i <file.length(); i++) {
+			byte[] temp=convert4CharsTo24Bits(file.substring(i, i+4));
+			for (int j = 0; j < temp.length; j++) {
+				bytes[i]= temp[j];
+				
+			}
+			
 		}
+		
 		
 		
 		

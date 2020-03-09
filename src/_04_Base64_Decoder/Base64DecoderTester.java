@@ -36,7 +36,7 @@ public class Base64DecoderTester {
 		check = Base64Decoder.convert4CharsTo24Bits("////");
 		// 111.111 111.111 111.111 111.111
 		// 1111.1111 1111.1111 1111.1111
-		assertArrayEquals(answer, check);
+	assertArrayEquals(answer, check);
 
 		answer[0] = (byte) 7;
 		answer[1] = (byte) 13;
@@ -72,7 +72,7 @@ public class Base64DecoderTester {
 			while (line != null) {
 				assertEquals(bits[ctr++], Byte.parseByte(line));
 				line = br.readLine();
-			}
+							}
 			br.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
