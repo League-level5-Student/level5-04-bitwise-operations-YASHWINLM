@@ -71,14 +71,18 @@ public class Base64Decoder {
 	public static byte[] base64StringToByteArray(String file) {
 		
 		byte[] bytes= new byte[(int)(file.length()*(0.75))];
+		char[] characters= file.toCharArray();
 		
 		int index=0;
-		for (int i = 0; i <file.length(); i++) {
-			byte[] temp=convert4CharsTo24Bits(file.substring(i, i+4));
-			for (int j = 0; j < temp.length; j++) {
-				bytes[i]= temp[j];
-				
+		for (int i = 0; i <216; i++) {
+			
+			for (int j = 0; j < bytes.length; j++) {
+				byte[] first=convert4CharsTo24Bits(file.substring(i, i+4));
+				for (int k = 0; k < first.length; k++) {
+					bytes[j]+=first[k];
+				}
 			}
+			
 			
 		}
 		
