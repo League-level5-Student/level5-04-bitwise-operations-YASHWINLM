@@ -1,4 +1,4 @@
-package _04_Base64_Decoder;
+ package _04_Base64_Decoder;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -73,15 +73,18 @@ public class Base64Decoder {
 		byte[] bytes= new byte[(int)(file.length()*(0.75))];
 		char[] characters= file.toCharArray();
 		
-		int index=0;
-		for (int i = 0; i <216; i++) {
+		int firstTracker=0;
+		for (int i = 0; i <file.length(); i+=4) {
 			
-			for (int j = 0; j < bytes.length; j++) {
+		
 				byte[] first=convert4CharsTo24Bits(file.substring(i, i+4));
+				
 				for (int k = 0; k < first.length; k++) {
-					bytes[j]+=first[k];
+					
+					bytes[firstTracker+k]+=first[k];
 				}
-			}
+			firstTracker+=3;
+			
 			
 			
 		}
